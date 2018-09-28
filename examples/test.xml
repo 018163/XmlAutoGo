@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCRIPT name="test" info="some thing">
+	<import>ucar_58.xml</import>
+	<w_cursor_pos x="0" y="0"/>
+	<w_cursor_click_left/>
+	<w_cursor_click_right/>
+	<variable>
+		img_path="D:/test/screenshots/";
+		excel_path="D:/test/excels/";
+		test_list=["a","b","c","d", "e"];
+		test_if="123";
+		test_set_var="999";
+		is_end_close=False;
+	</variable>
+	<D_URL>https://www.baidu.com</D_URL>
+	<D_SLEEP type="second">1</D_SLEEP>
+	<D_WAIT_FOR timeout="10">id=wrapper</D_WAIT_FOR>
+	<D_ADD_COOKIE>
+		my='abc';
+		myinfo='add by addjs.exe';
+		BAIDUID='AAAAAAAAAAAAAA:FG=1';
+		BDUSS='AAAAAAAAAAAAAAAAAAAAAAAAAA';
+	</D_ADD_COOKIE>
+	<D_REFRESH/>
+	<d_input select="id=kw" >addjs test input test</d_input>
+	<D_CLICKABLE>id=su</D_CLICKABLE>
+	<D_JAVASCRIPT>
+		ADDJS_SETVAR('test_set_var', '123');
+		document.getElementsByName('tj_login')[1].click();
+	</D_JAVASCRIPT>
+	<D_SLEEP type="second">1</D_SLEEP>
+	<D_SCREENSHOT id="test1">{!img_path}test1.png</D_SCREENSHOT>
+	<D_WAIT_FOR>ID=TANGRAM__PSP_10__footerULoginBtn</D_WAIT_FOR>
+	<D_JAVASCRIPT>document.getElementById('TANGRAM__PSP_10__footerULoginBtn').click();</D_JAVASCRIPT>
+	<D_WAIT_FOR>ID=TANGRAM__PSP_10__userName</D_WAIT_FOR>
+	<D_JAVASCRIPT>document.getElementById('TANGRAM__PSP_10__userName').click();</D_JAVASCRIPT>
+	<D_WAIT_FOR>ID=TANGRAM__PSP_10__password</D_WAIT_FOR>
+	<D_JAVASCRIPT>document.getElementById('TANGRAM__PSP_10__password').click();</D_JAVASCRIPT>
+	<D_CLICKABLE>id=TANGRAM__PSP_10__submit</D_CLICKABLE>
+	<D_SLEEP>1</D_SLEEP>
+	<D_SCREENSHOT id="test2">{!img_path}test2.png</D_SCREENSHOT>
+	<D_JAVASCRIPT>
+		console.log('test use  VARIABLE', {!test_list});
+		console.log('test_set_var:', {!test_set_var});
+	</D_JAVASCRIPT>
+	<XLS_EXCEL name="test.xlsx" path="{!excel_path}">
+		<XLS_SHEET index="0" title="test1">
+			<XLS_VALUE cell="A1">test excel value</XLS_VALUE>
+			<XLS_IMG cell="A5" width="800" height="600">{!test1}</XLS_IMG>
+		</XLS_SHEET>
+		<XLS_SHEET index="1">
+			<XLS_IMG cell="A1" width="800" height="600">{!test1}</XLS_IMG>
+			<XLS_IMG cell="A25"  width="800" height="600">{!test2}</XLS_IMG>
+		</XLS_SHEET>
+	</XLS_EXCEL>
+	<D_JAVASCRIPT>console.log('====test if tag============');</D_JAVASCRIPT>
+	<IF>
+		<WHEN test="0">
+			<D_JAVASCRIPT>console.log('if-when');</D_JAVASCRIPT>
+		</WHEN>
+		<ELIF test="{!test_if}=='123'">
+			<D_JAVASCRIPT>console.log('if-elif');</D_JAVASCRIPT>
+		</ELIF>
+		<ELSE>
+			<D_JAVASCRIPT>console.log('if-else');</D_JAVASCRIPT>
+		</ELSE>
+	</IF>
+	<D_JAVASCRIPT>console.log('====test for tag with using range============');</D_JAVASCRIPT>
+	<FOR range="(0, 5)">
+		<D_JAVASCRIPT>console.log('{!index}');</D_JAVASCRIPT>
+	</FOR>
+	<D_JAVASCRIPT>console.log('====test for tag with using items============');</D_JAVASCRIPT>
+	<FOR items="{!test_list}" var="item">
+		<if>
+			<when test="{!item}=='c'">
+				<break/>
+			</when>
+		</if>
+		<D_JAVASCRIPT>console.log('{!item}', '{!index}');</D_JAVASCRIPT>
+	</FOR>
+	<IF>
+		<WHEN test="{!is_end_close}">
+			<D_JAVASCRIPT>alert('will be closed');</D_JAVASCRIPT>
+			<D_SLEEP>10</D_SLEEP>
+			<D_QUIT></D_QUIT>
+		</WHEN>
+	</IF>
+	<D_JAVASCRIPT>console.log('====test function============');</D_JAVASCRIPT>
+	<FUNC name="test_func" parameters="{'a':0, 'b':0, 'c':[0,1,2,3]}">
+		<VARIABLE>
+			func_var=2;
+			func_var2="2";
+		</VARIABLE>
+		<IF>
+			<WHEN test="{!func_var}=={!a}">
+				<D_JAVASCRIPT>console.log('test_func if-when');</D_JAVASCRIPT>
+			</WHEN>
+			<ELIF test="{!func_var}=={!b}">
+				<D_JAVASCRIPT>console.log('test_func ELIF');</D_JAVASCRIPT>
+			</ELIF>
+		</IF>
+		<D_SCREENSHOT id="test3">{!img_path}test3.png</D_SCREENSHOT>
+		<D_JAVASCRIPT>
+			console.log('func_var:{!func_var}', 'func_var2:{!func_var2}');
+		</D_JAVASCRIPT>
+		<FOR items="{!c}" var="item">
+			<D_JAVASCRIPT>console.log('{!item}', '{!index}');</D_JAVASCRIPT>
+		</FOR>
+		<XLS_EXCEL name="test2.xlsx" path="{!excel_path}">
+			<XLS_SHEET index="0" title="test1">
+				<XLS_VALUE cell="A1">test excel value in function</XLS_VALUE>
+				<XLS_IMG cell="A5" width="800" height="600">{!test3}</XLS_IMG>
+			</XLS_SHEET>
+		</XLS_EXCEL>
+	</FUNC>
+	<CALL name="test_func" parameters="{'a':1, 'b':2}"/>
+	<D_JAVASCRIPT>console.log('====test MODULE============');</D_JAVASCRIPT>
+	<MODULE name="myModule">
+		<VARIABLE>
+				m_v=1;
+		</VARIABLE>
+		<FUNC name="test" parameters="{'a':0, 'b':0}">
+			<VARIABLE>
+				m_v2=2;
+			</VARIABLE>
+			<D_JAVASCRIPT>console.log('{!m_v}, {!m_v2}')</D_JAVASCRIPT>
+			<FOR range="(0, 5)">
+				<D_JAVASCRIPT>console.log('index:{!index}')</D_JAVASCRIPT>
+			</FOR>
+			<IF>
+				<WHEN test="{!m_v}=={!a}">
+					<D_JAVASCRIPT>console.log('test_func if-when');</D_JAVASCRIPT>
+				</WHEN>
+				<ELIF test="{!m_v}=={!b}">
+					<D_JAVASCRIPT>console.log('test_func ELIF');</D_JAVASCRIPT>
+				</ELIF>
+			</IF>
+		</FUNC>
+	</MODULE>
+	<CALL name="myModule.test" parameters="{'a':1, 'b':2}"/>
+	<CALL name="ucarMOD.fun58" parameters="{'min':1, 'max':5}"/>
+	<ui_dlg title="test title1">this is dialog</ui_dlg>
+	<ui_run_over title="test">over!</ui_run_over>
+</SCRIPT>
