@@ -13,6 +13,6 @@ XmlAutoGo is a tools that can be used for control webdriver and win32API on wind
 3. It is support variables/method/module and so on.
 4. It can use to upload files with browers.
 5. There are two way to run the XmlAutoGo:
-  - Click the XmlAutoGo.exe to use with windows UI.
-  - Run the command to run scripts program.
+&nbsp;&nbsp;- Click the XmlAutoGo.exe to use with windows UI.
+&nbsp;&nbsp;- Run the command to run scripts program.
    
