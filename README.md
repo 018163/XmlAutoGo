@@ -1,10 +1,10 @@
 # XmlAutoGo
 
-## <a href="https://www.freeol.cn/">Home</a>
+## <a target="_blank" href="https://www.freeol.cn/">Home</a>
 
-## <a href="#">Document</a>
+## <a target="_blank" href="https://xmlautogo-docs.readthedocs.io/en/latest/">Document</a>
 
-## <a href="https://github.com/freeol/XmlAutoGo/releases/download/v0.0.0/XmlAutoGo_0.0.0.zip">Download</a>
+## <a target="_blank" href="https://github.com/freeol/XmlAutoGo/releases/download/v0.0.0/XmlAutoGo_0.0.0.zip">Download</a>
 
 ## What is XmlAutoGo?
 XmlAutoGo is a tools that can be used for control webdriver and win32API on windows.
