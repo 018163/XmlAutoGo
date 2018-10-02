@@ -4,7 +4,7 @@
 
 ## <a href="#">Document</a>
 
-## <a href="#">Download XmlAutoGo</a>
+## <a href="https://github.com/freeol/XmlAutoGo/releases/download/v0.0.0/XmlAutoGo_0.0.0.zip">Download XmlAutoGo</a>
 
 ## What is XmlAutoGo?
 XmlAutoGo is a tools that can be used for control webdriver and win32API on windows.
