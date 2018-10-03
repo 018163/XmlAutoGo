@@ -10,6 +10,6 @@
 
  - test.xml is normal examples.
 
- -downloadImgs.xml is a example that download images from baidu image.
+ - downloadImgs.xml is a example that download images from baidu image.
 
 
