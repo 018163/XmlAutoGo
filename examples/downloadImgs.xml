@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCRIPT name="loadImages" info="loadImages">
+	<variable>
+		img_path="D:/test/download/chrome_imgs/";
+	</variable>
+	<d_url>http://image.baidu.com/</d_url>
+	<sleep>1</sleep>
+	<d_input select="id=kw" >chrome icon</d_input>
+	<d_clickable>class_name=s_search</d_clickable>
+	<for range="(0, 2)">
+		<d_javascript>document.documentElement.scrollTop=100000;</d_javascript>
+		<sleep>1</sleep>
+	</for>
+	<d_javascript>
+		var imgs = document.querySelectorAll("#imgid > div > ul > .imgitem");
+		var urls = [];
+		for(var i in imgs){
+			if(!isNaN(i)){
+				var n = imgs[i];
+				if(n.getAttribute("data-objurl") &amp;&amp; true){
+					urls.push(n.getAttribute('data-objurl'));
+				}
+			}
+		}
+		ADDJS_SETVAR('img_urls', urls);
+	</d_javascript>
+	<for items="{!img_urls}" var="item">
+		<d_javascript>console.log('{!item}')</d_javascript>
+		<d_download id="imgs{!index}" path="{!img_path}">{!item}</d_download>
+	</for>
+</SCRIPT>             

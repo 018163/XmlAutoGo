@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SCRIPT name="test" info="some thing">
-	<import>ucar_58.xml</import>
 	<w_cursor_pos x="0" y="0"/>
 	<w_cursor_click_left/>
 	<w_cursor_click_right/>
@@ -138,7 +137,6 @@
 		</FUNC>
 	</MODULE>
 	<CALL name="myModule.test" parameters="{'a':1, 'b':2}"/>
-	<CALL name="ucarMOD.fun58" parameters="{'min':1, 'max':5}"/>
 	<ui_dlg title="test title1">this is dialog</ui_dlg>
 	<ui_run_over title="test">over!</ui_run_over>
 </SCRIPT>
