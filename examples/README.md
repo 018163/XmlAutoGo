@@ -4,7 +4,7 @@
 
 ## <a target="_blank" href="https://xmlautogo-docs.readthedocs.io/en/latest/">Docs</a>
 
-## <a target="_blank" href="https://github.com/freeol/XmlAutoGo/releases/download/v0.0.0/XmlAutoGo_0.0.0.zip">Download</a>
+## <a target="_blank" href="https://github.com/freeol/XmlAutoGo/releases/download/v0.0.0/XmlAutoGo_0.0.0.zip">Download the last version</a>
 
 ## examples explain:
 
